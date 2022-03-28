@@ -912,15 +912,139 @@ a --> [*]
 
 描述物件在时间序列中的交叉作用。
 
+### 5.8.1 时序图基本概念
+
 ```plantumlcode
 @startuml
+序列 --> 用于绘制两个 参与者之间的信息。 参与者不必明确声明。
+在序列图中 <- <-- 只是表示消息的方向，并不改变绘图。
 
+参与者类型 8 种：
+    participant 参与者
+    actor       角色
+    boundary    边界
+    control     控制
+    entity      实体
+    database    数据库
+    collections 集合
+    queue       队列
+
+可以使用 order 关键字来定制参与者的显示顺序。
+
+消息文字可以用 \n 来换行。
 @enduml
 ```
 
+图8-1 时序图基本概念
+
 ```plantuml
 @startuml
+title 时序图基本概念-C81
 
+actor Alic #red
+
+Alic ->  Bob  : 授权请求
+Bob  --> Alic : 授权返回
+
+Alic ->  Bob  : 另外一个授权请求
+Alic <-- Bob  : 另外一个授权返回一
+Alic <-  Bob  : 另外一个授权返回二
+
+participant 参与者 [
+    =姓
+    ---
+    ""名字""
+]
+
+participant 参与者 as a1 #99FF99
+actor       角色   as a2 order 1
+boundary    边界   as a3
+control     控制   as a4
+entity      实体   as a5
+database    数据库 as a6
+collections 集合   as a7 order 2
+queue       队列   as a8
+a1 --> a1 : 自己给自己发消息
+a1 ->  a2 : To actor \nnew line
+a1 --> a3 : To boundary
+a4 <-  a1 : To control
+a5 <-- a1 : To entity
+a1 --> a6 : To database
+a1 --> a7 : To collections
+a1 --> a8 : To queue
+@enduml
+```
+
+#### 5.8.2 一些特殊的用法
+
+```plantumlcode
+@startuml
+使用 skinparam responseMessageBelowArrow true 命令，让响应信息显示在箭头下面。
+
+改变箭头样式：
+    > 后添加 x       表示信息丢弃
+    / \ 而不是 < >   表示只有箭头的底部或者顶部
+    重复箭头头       表示一个尖头箭头，比如 >> << // \\
+    --               表示点状的箭头
+    -                表示实线的箭头
+    在箭头头最后添加 o  表示一个带头部带端的箭头
+    <->                 表示双向箭头
+
+关键字 autonumber 用于自动对消息编号。
+语句 autonumber //start// 用于指定编号的初始值，而 autonumber //start// //increment// 可以同时指定编号的初始值和每次增加的值。
+语句 autonumber stop 和 autonumber resume //increment// //format// 来表示暂停或继续使用自动编号。
+
+关键字 newpage 用于把一张图分割成多张。
+
+使用 note left 或 note right 关键字在信息后面加上注释。 使用 end note 关键字有一个多行注释。
+
+note across: 备注描述 所有参与者之间添加备注
+
+hnote rnote 改变备注的描述为六边形、正方形
+@enduml
+```
+
+图8-2 一些特殊的用法
+
+```plantuml
+title 一些特殊的用法-C82
+
+skinparam responseMessageBelowArrow true
+autonumber
+
+note across : "所有参与者一起备注"
+
+A -> B : request
+B --> A : reponse
+
+A -[#red]>x B : 丢弃消息
+A -\  B : 顶部箭头
+A -/  B : 底部箭头
+A ->> B : 尖头箭头
+
+note left : "`newpage` 可以把同一个图分页显示"
+
+autonumber 10 "<b>[00]"
+A -\\ B : 顶部尖头箭头
+note right : "右侧注释"
+A -// B : 底部尖头箭头
+note left
+多行注释
+第二行
+end note
+A --> B : 点状箭头
+hnote over A : 六边形描述
+autonumber stop
+A ->  B : 实线箭头
+rnote over B
+    多行
+    文本
+    描述
+endrnote
+
+autonumber 40 5 "<b>(<u>##</u>)"
+A <-> B : 双向箭头
+A ->o B : 带端的箭头
 @enduml
 ```
 
