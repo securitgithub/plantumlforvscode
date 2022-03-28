@@ -230,6 +230,7 @@ UML 2.2 中一共定义了 14 种图示：
 描述系统的类集合，类的属性和类之间的关系。
 
 1. 通用图例一览
+
 ```plantumlcode
 @startuml
 ()   圆
@@ -267,11 +268,11 @@ Bus o-- Driver  聚合
 @enduml
 ```
 
-图-1 类图基本元素
+图1-1 类图基本元素
 
 ```plantuml
 @startuml
-note "类图基本元素" as C1
+title 类图基本元素-C11
 
 abstract        抽象
 abstract class  抽象(等同abstract)
@@ -317,11 +318,11 @@ interface       接口
 @enduml
 ```
 
-图-2 类图扩展用法
+图1-2 类图扩展用法
 
 ```plantuml
 @startuml
-note "类图访问权限控制" as C2
+title 类图访问权限控制-C12
 
 class Object << general >>
 Object <|- Array
@@ -344,11 +345,11 @@ class Array {
 @enduml
 ```
 
-图-3 显示访问权限文本
+图1-3 显示访问权限文本
 
 ```plantuml
 @startuml
-note "类图访问权限控制显示文本" as C3
+title 类图访问权限控制显示文本-C13
 
 skinparam classAttributeIconSize 0
 
@@ -363,11 +364,11 @@ class Array {
 @enduml
 ```
 
-图-4 泛型
+图1-4 泛型
 
 ```plantuml
 @startuml
-note "泛型" as C4
+title 泛型-C14
 
 class Foo<? extends Element> {
   int size()
@@ -389,11 +390,11 @@ Foo *- Element
 @enduml
 ```
 
-图-5 箭头方向
+图1-5 箭头方向
 
 ```plantuml
 @startuml
-note "箭头方向控制" as C5
+title 箭头方向控制-C15
 
 left to right direction
 教室 o- 学生
@@ -413,11 +414,11 @@ left to right direction
 @enduml
 ```
 
-图-6 [分组继承关系](http://www.plantuml.com/plantuml/uml/SoWkIImgAStDuIhEpimhI2nAp5L8ByelBV3CoqWjoYn9p4jELJ3aud8qLB2fqTLLS0AnZQ1i8pZJsGWeR0mLDeOpdH5C5sEW2XEe2XCuqnd1T44mNKsu75BpKa3E0W00)
+图1-6 [分组继承关系](http://www.plantuml.com/plantuml/uml/SoWkIImgAStDuIhEpimhI2nAp5L8ByelBV3CoqWjoYn9p4jELJ3aud8qLB2fqTLLS0AnZQ1i8pZJsGWeR0mLDeOpdH5C5sEW2XEe2XCuqnd1T44mNKsu75BpKa3E0W00)
 
 ```plantuml
 @startuml
-note "继承关系分组" as C6
+title 继承关系分组-C16
 
 skinparam groupInheritance 3
 
@@ -441,30 +442,584 @@ A4 <|-- E4
 
 显示特定时间，建模系统结构的完整或部分视图的图。
 
+#### 5.2.1 对象的基本定义
+
+```plantumlcode
+@startuml
+使用关键字 object 定义实例。
+
+对象的关系：
+    <|- 扩展
+    *-- 组合
+    o-- 聚合
+
+关联对象可以使用  diamond <> 来进行
+
+用冒号加属性名的形式声明属性。
+@enduml
+```
+
+图2-1 对象的基本定义
+
+```plantuml
+@startuml
+title 对象的基本定义-C21
+
+object 汽车
+object "另外一种方式定义车轮 " as oo2
+
+top to bottom direction
+left to right direction
+
+object o1
+object o2
+object o3
+object o4
+object o5
+object o6
+object o7
+diamond dia2
+
+o1 <|- o2
+o3 --* o1
+o1 "1" o-- "4" o4
+o1 ..  o5 : 一些标签信息
+
+o5 --> dia2
+dia2 ..> o6
+dia2 --> o7
+
+object a1
+a1 : name = "a1"
+a1 : id  = 1
+object a2 {
+    name = "a2"
+    id = 2
+}
+object a3
+<> dia
+
+a1 --> dia
+a2 --> dia
+dia --> a3
+@enduml
+```
+
+#### 5.2.2 关联数据的显示（map）
+
+```plantumlcode
+@startuml
+可以通过 => 来左右连接 map 的 key 和 value， 来展示关联数据。
+
+也可以使用 --> 在对象定义外关联对象 *-> 在对象定义内来关联对象
+
+--> 表示水平的关联线条  -> 表示垂直的关联线条
+@enduml
+```
+
+图2-2 关联数据的显示
+
+```plantuml
+@startuml
+title 关联数据的显示-C22
+
+left to right direction
+
+map "Map **name => id**" as student_ids {
+    xiaming    => 1
+    xiaohuang  => 2
+    xiaohu     => 3
+}
+
+map "Map<String, int>" as student_id2s {
+    liming => 4
+    litie  => 5
+    lili   => 6
+}
+
+object s_id
+s_id : id = 7
+object s_age
+map "Map<String, int>" as student_id3s {
+    zhangsan *-> s_id
+    wangwu   => 8
+    lisi     => 9
+}
+student_id3s::lisi <.. s_age
+
+student_ids  ->  student_id2s
+student_id2s --> student_id3s
+@enduml
+```
+
 ### 5.3 [组件图](https://plantuml.com/zh/component-diagram)
 
 如何互相组织以构建更大的组件或是软件系统的。
+
+#### 5.3.1 组件图的基本定义
+
+```plantumlcode
+@startuml
+组件：必须用 [] 括起来或者使用 component 定义一个组件。
+接口：用 () 括起来或者使用 interface 定义一个接口。
+
+可以用关键字 as 给组件/接口定义一个别名。
+
+元素之间可以使用线条连接：
+    .. 虚线
+    -- 直线
+    -> 箭头
+@enduml
+```
+
+图3-1 组件图的基本定义
+
+```plantuml
+@startuml
+title 组件图的基本定义-C31
+
+left to right direction
+
+[Comp1]
+[Another component] as Comp2
+
+component Comp3
+component [last\ncomponent] as Comp4
+
+() "First Interf1"
+() "First interface" as Interf2
+
+interface Interf3
+interface "last\ninterface" as Interf4
+
+Interf1 .. Comp1
+Comp1 .> Interf2 : use
+Comp1 --> Interf3
+
+note "接口三" as i3
+Interf3 -- i3
+@enduml
+```
+
+#### 5.3.2 组件图的高级用法
+
+```plantumlcode
+@startuml
+可以使用多个关键字将组件和接口组合起来，包括 ： package node folder frame cloud database
+
+命令 skinparam componentStyle uml1 可以切换到 UML1 标记符。
+命令 skinparam componentStyle rectangle 使用长方形去表示组件。
+
+可以用方括号 [] 在连线上添加描述。
+
+hide @unlinked 或 remove @unlinked 可以隐藏没事用到的组件或者接口。
+@enduml
+```
+
+图3-2 组件图多关键字的组合
+
+```plantuml
+@startuml
+title 组件图多关键字的组合-C32
+
+skinparam componentStyle uml1
+skinparam componentStyle rectangle
+
+component comp1 [
+This component
+has a long comment
+on several lines
+]
+
+package "Some Group" {
+  HTTP - [First Component]
+  [Another Component]
+}
+
+node "Other Groups" {
+  FTP - [Second Component]
+  [First Component] --> FTP
+}
+
+cloud {
+  [Example 1]
+}
+
+database "MySql" {
+  folder "This is my folder" {
+    [Folder 3]
+  }
+  frame "Foo" {
+    [Frame 4] #Yellow
+  }
+}
+
+[Another Component] --> [Example 1]
+[Example 1] --> [Folder 3]
+[Folder 3] --> [Frame 4]
+
+interface in_unused
+
+note "remove @unlinked" as n1
+note "hide @unlinked"   as n2
+@enduml
+```
 
 ### 5.4 [部署图](https://plantuml.com/zh/deployment-diagram)
 
 对节点（硬件组件）上工件（软件组件）的物理部署（包括连接方式）进行建模。
 
+```plantumlcode
+@startuml
+
+@enduml
+```
+
+```plantuml
+@startuml
+
+@enduml
+```
+
 ### 5.5 [活动图](https://plantuml.com/zh/activity-diagram-legacy)
 
 用于为计算性和组织性过程（即工作流）建模，相关活动之间的数据流也在其覆盖范围之内。
+
+#### 5.5.1 活动图的基本描述
+
+```plantumlcode
+@startuml
+使用 (*) 作为活动图的开始点和结束点。
+
+用 (*top) 强制开始点位于图示的顶端。
+
+使用 --> 绘制箭头， [] 在 箭头后可以增加标签信息。
+
+改变箭头方向：
+    -down->  (默认箭头)
+    -right-> or -->
+    -left->
+    -up->
+@enduml
+```
+
+图5-1 活动图示例
+```plantuml
+@startuml
+title 活动图示例-C51
+
+(*top) -left-> "第一个活动图" as c
+c -up-> [转向第二个活动] "第二个活动" as d
+d -do-> (*)
+@enduml
+```
+
+#### 5.5.2 分支控制
+
+```plantumlcode
+@startuml
+使用关键字 if/then/else/endif 创建分支。
+
+使用 ===code=== 来显示同步条。
+
+定义活动时可以用 \n 来定义跨越多行的描述。
+
+用关键字 partition 定义分区，还可以设置背景色(用颜色名或者颜色值)。
+@enduml
+```
+
+图5-2 分支控制
+
+```plantuml
+@startuml
+title 分支控制-C52
+
+(*) -right-> "初始化" as a1
+
+partition math {
+a1 --> ===开始===
+
+if "是否大于 10" then
+    -right-> [true] "减去 5"
+    -right-> "乘以 10"
+    -right-> "加上 2"
+    if "是否大于 50" then
+        -right-> [true] "终端" as c1
+    else
+        --> [false] "乘以 5"
+        --> c1
+    endif
+else
+    -down-> [false] "取绝对值"
+    --> [直接输出] c1
+endif
+
+c1 --> ===结束===
+}
+
+partition notMath #LightSkyBlue {
+===开始=== ..> "写数据库表" as sw
+sw --> ===结束===
+}
+--> 退出程序
+--> (*)
+@enduml
+```
 
 ### 5.6 [状态图](https://plantuml.com/zh/state-diagram)
 
 对象在其生存期间的动态行为，表现为对象所经历的状态序列，引起状态转移的事件，以及因状态转移而伴随的动作。
 
+#### 5.6.1 状态图的基本描述
+
+```plantumlcode
+@startuml
+使用 [*] 开始和结束状态图
+
+关键字 state 定义长名字状态。
+
+使用 hide empty description 关键字，渲染一个简单的状态。
+
+一个状态也可能是合成的，必须使用关键字state和花括号来定义合成状态。
+
+[H] 表示历史记录，[H*] 表示子状态的深层历史记录。
+
+用 -- or || 作为分隔符来合成并发状态。
+
+常用关键字：
+    <<start>>  表示开始
+    <<end>>    表示结束
+    <<fork>>   表示状态的复制
+    <<join>>   表示状态的统一。
+    <<choice>> 进行分支选择
+@enduml
+```
+
+图6-1 状态图示例
+
+```plantuml
+@startuml
+title 状态图示例-C61
+
+note "`hide empty description` 来隐藏没有描述的状态" as note1
+
+state "长名字的状态需要单独定义" as c
+
+state fork_state <<fork>>
+
+state allstart <<start>>
+state allend   <<end>>
+
+allstart --> fork_state
+
+fork_state -right-> c
+c : 这是一段字符串
+c : 长度为 10
+
+state join_state <<join>>
+
+state ch <<choice>>
+
+c --> ch
+
+ch -left-> bytes : [length > 1024]
+ch -right-> string : [length <= 1024]
+
+ch --> join_state
+
+join_state --> 第二个状态
+
+state 一个合成的状态 {
+    fork_state --> 工作
+    工作 --> join_state : 事件控制
+    工作 -left-> [H]
+    工作 -right-> [H*]
+}
+
+state 状态合成的状态 {
+    [*] --> 开始
+    --
+    [*] --> 空闲
+    ||
+    [*] --> 退出
+}
+
+一个合成的状态 -up-> 状态合成的状态
+
+第二个状态 -right-> allend
+@enduml
+```
+
+#### 5.6.2 状态图其他语法
+
+```plantumlcode
+@startuml
+
+指针关键字 <<entryPoint>> <<exitPoint>>
+固定关键字 <<inputPin>> <<outputPin>>
+扩展关键字 <<expansionInput>> <<expansionOutput>>
+
+note on link/end note 可以用来描述状态连线或链接
+@enduml
+```
+
+图6-2 状态图其他语法
+
+```plantuml
+@startuml
+title 状态图其他语法-C62
+
+state "pentry" as a  <<entryPoint>>
+state pexit  <<exitPoint>>
+
+state pin    <<inputPin>>
+state pout   <<outputPin>>
+
+state ein    <<expansionInput>>
+state eout   <<expansionOutput>>
+
+[*] --> a
+note on link
+    状态转换的注释
+end note
+a --> pexit
+note right of pin : 固定的输入点
+a --> pin
+a --> pout
+a --> ein
+a --> eout
+a --> [*]
+@enduml
+```
+
 ### 5.7 [用例图](https://plantuml.com/zh/use-case-diagram)
 
 用户与系统交互的最简表示形式，展现了用户和与他相关的用例之间的关系。
+
+```plantumlcode
+@startuml
+
+@enduml
+```
+
+```plantuml
+@startuml
+
+@enduml
+```
 
 ### 5.8 [时序图](https://plantuml.com/zh/sequence-diagram)
 
 描述物件在时间序列中的交叉作用。
 
+```plantumlcode
+@startuml
+
+@enduml
+```
+
+```plantuml
+@startuml
+
+@enduml
+```
+
 ### 5.9 [时间图](https://plantuml.com/zh/timing-diagram)
 
 一种特定类型的交互图，其重点是时序约束。探索对象在给定时间段内的行为。时序图是序列图的一种特殊形式。时序图和时序图的区别在于轴是颠倒的。
+
+#### 5.9.1 时间图的基本描述
+
+```plantumlcode
+@startuml
+使用 concise 或 robust 关键字声明参与者, 选择哪个取决于所需的显示样式。
+通过 @ 标注, 和 is 动词定义状态。
+
+可以使用 @ 符号表示相对时间.
+
+使用 --> 描述消息
+
+以通过使用 as 关键字和以: 开始的名称来定义一个时间作为锚点。
+
+has 可以定义状态
+@enduml
+```
+
+图9-1 时间图基本概念
+
+```plantuml
+@startuml
+title 时间图基本概念-C91
+
+robust  "Web 浏览器" as wb
+concise "Web 用户"   as wu
+
+wb is 初始化
+wu is 暂无
+
+wb has start,process,end
+
+@500 as :end
+
+@0 as :start
+wb is 空闲
+wu is 空闲
+
+@wb
+wb@0 <--> @50 : {50 ms long}
+
+@+100
+wu -> wb: URL
+wu is 等待中
+wb is 处理中
+
+@300
+wb is 等待中
+
+@:end
+wu is 空闲
+@enduml
+```
+
+#### 5.9.2 时间图的其他描述
+
+```plantumlcode
+@startuml
+关键字 binary clock 可以绘制二进制及时钟信号。
+
+也选择添加：
+    title              标题
+    header             页眉
+    footer             页脚
+    caption            图例
+    legend/end lengend 说明
+@enduml
+```
+
+图9-2 时间图的其他描述
+
+```plantuml
+@startuml
+title 时间图的其他描述-C92
+
+header  页眉
+footer  页脚
+caption 图例
+
+legend
+    一些说明文字
+end legend
+
+clock clk with period 2
+binary "开启" as EN
+
+@0
+EN is 高电压
+
+@5
+EN is 高电压
+
+@10
+EN is 高电压
+@enduml
+```

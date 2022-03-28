@@ -1,0 +1,71 @@
+@startuml
+title 对象的基本定义-C21
+
+object 汽车
+object "另外一种方式定义车轮 " as oo2
+
+top to bottom direction
+left to right direction
+
+object o1
+object o2
+object o3
+object o4
+object o5
+object o6
+object o7
+diamond dia2
+
+o1 <|- o2
+o3 --* o1
+o1 "1" o-- "4" o4
+o1 ..  o5 : 一些标签信息
+
+o5 --> dia2
+dia2 ..> o6
+dia2 --> o7
+
+object a1
+a1 : name = "a1"
+a1 : id  = 1
+object a2 {
+    name = "a2"
+    id = 2
+}
+object a3
+<> dia
+
+a1 --> dia
+a2 --> dia
+dia --> a3
+@enduml
+
+@startuml
+title 关联数据的显示-C22
+
+left to right direction
+
+map "Map **name => id**" as student_ids {
+    xiaming    => 1
+    xiaohuang  => 2
+    xiaohu     => 3
+}
+
+map "Map<String, int>" as student_id2s {
+    liming => 4
+    litie  => 5
+    lili   => 6
+}
+
+object s_id
+s_id : id = 7
+object s_age
+map "Map<String, int>" as student_id3s {
+    zhangsan *-> s_id
+    wangwu   => 8
+    lisi     => 9
+}
+student_id3s::lisi <.. s_age
+student_ids  ->  student_id2s
+student_id2s --> student_id3s
+@enduml

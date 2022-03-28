@@ -1,5 +1,5 @@
 @startuml
-note "类图基本元素" as C1
+title 类图基本元素-C11
 
 abstract        抽象
 abstract class  抽象(等同abstract)
@@ -22,7 +22,7 @@ interface       接口
 
 
 @startuml
-note "类图访问权限控制" as C2
+title 类图访问权限控制-C12
 
 class Object << general >>
 Object <|- Array
@@ -46,7 +46,7 @@ class Array {
 
 
 @startuml
-note "类图访问权限控制显示文本" as C3
+title 类图访问权限控制显示文本-C13
 
 skinparam classAttributeIconSize 0
 
@@ -62,7 +62,7 @@ class Array {
 
 
 @startuml
-note "泛型" as C4
+title 泛型-C14
 
 class Foo<? extends Element> {
   int size()
@@ -72,7 +72,7 @@ Foo *- Element
 
 
 @startuml
-note "箭头方向控制" as C5
+title 箭头方向控制-C15
 
 left to right direction
 教室 o- 学生
@@ -85,7 +85,7 @@ left to right direction
 
 
 @startuml
-note "继承关系分组" as C6
+title 继承关系分组-C16
 
 skinparam groupInheritance 3
 

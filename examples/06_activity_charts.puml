@@ -1,0 +1,41 @@
+@startuml
+title 活动图示例-C51
+
+(*top) -left-> "第一个活动图" as c
+c -up-> [转向第二个活动] "第二个活动" as d
+d -do-> (*)
+@enduml
+
+
+@startuml
+title 分支控制-C52
+
+(*) -right-> "初始化" as a1
+partition math {
+a1 --> ===开始===
+
+if "是否大于 10" then
+    -right-> [true] "减去 5"
+    -right-> "乘以 10"
+    -right-> "加上 2"
+    if "是否大于 50" then
+        -right-> [true] "终端" as c1
+    else
+        --> [false] "乘以 5"
+        --> c1
+    endif
+else
+    -down-> [false] "取绝对值"
+    --> [直接输出] c1
+endif
+
+c1 --> ===结束===
+}
+
+partition notMath #LightSkyBlue {
+===开始=== ..> "写数据库表" as sw
+sw --> ===结束===
+}
+--> 退出程序
+--> (*)
+@enduml

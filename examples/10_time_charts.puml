@@ -1,0 +1,56 @@
+@startuml
+title 时间图基本概念-C91
+
+robust  "Web 浏览器" as wb
+concise "Web 用户"   as wu
+
+wb is 初始化
+wu is 暂无
+
+wb has start,process,end
+
+@500 as :end
+
+@0 as :start
+wb is 空闲
+wu is 空闲
+
+@wb
+wb@0 <--> @50 : {50 ms long}
+
+@+100
+wu -> wb: URL
+wu is 等待中
+wb is 处理中
+
+@300
+wb is 等待中
+
+@:end
+wu is 空闲
+@enduml
+
+
+@startuml
+title 时间图的其他描述-C92
+
+header: 页眉
+footer: 页脚
+caption 图例
+
+legend
+    一些说明文字
+end legend
+
+clock clk with period 2
+binary "开启" as EN
+
+@0
+EN is 高电压
+
+@5
+EN is 高电压
+
+@10
+EN is 高电压
+@enduml

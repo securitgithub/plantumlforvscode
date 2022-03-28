@@ -1,0 +1,76 @@
+```plantuml
+@startuml
+title 状态图示例-C61
+
+note "`hide empty description` 来隐藏没有描述的状态" as note1
+
+state "长名字的状态需要单独定义" as c
+
+state fork_state <<fork>>
+
+state allstart <<start>>
+state allend   <<end>>
+
+allstart --> fork_state
+
+fork_state -right-> c
+c : 这是一段字符串
+c : 长度为 10
+
+state join_state <<join>>
+
+state ch <<choice>>
+
+c --> ch
+
+ch -left-> bytes : [length > 1024]
+ch -right-> string : [length <= 1024]
+
+ch --> join_state
+
+join_state --> 第二个状态
+
+state 一个合成的状态 {
+    fork_state --> 工作
+    工作 --> join_state : 事件控制
+    工作 -left-> [H]
+    工作 -right-> [H*]
+}
+
+state 状态合成的状态 {
+    [*] --> 开始
+    --
+    [*] --> 空闲
+    ||
+    [*] --> 退出
+}
+
+一个合成的状态 -up-> 状态合成的状态
+
+第二个状态 -right-> allend
+@enduml
+
+@startuml
+title 状态图其他语法-C62
+
+state "pentry" as a  <<entryPoint>>
+state pexit  <<exitPoint>>
+
+state pin    <<inputPin>>
+state pout   <<outputPin>>
+
+state ein    <<expansionInput>>
+state eout   <<expansionOutput>>
+
+[*] --> a
+note on link
+    状态转换的注释
+end note
+a --> pexit
+note right of pin : 固定的输入点
+a --> pin
+a --> pout
+a --> ein
+a --> eout
+a --> [*]
+@enduml
