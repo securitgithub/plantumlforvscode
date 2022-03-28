@@ -227,18 +227,244 @@ UML 2.2 中一共定义了 14 种图示：
 
 ### 5.1 [类图](https://plantuml.com/zh/class-diagram)
 
+描述系统的类集合，类的属性和类之间的关系。
+
+1. 通用图例一览
+```plantumlcode
+@startuml
+()   圆
+<>   菱形
+..   表示虚线
+--   表示实线
+@enduml
+```
+
+#### 5.1.1 元素声明
+
+```plantumlcode
+@startuml
+abstract        抽象
+abstract class  抽象(等同abstract)
+annotation      注解
+circle          圆
+()              圆缩写形式
+class           类
+diamond         菱形
+<>              菱形写形式
+entity          实例
+enum            枚举
+interface       接口
+
+Car <|- Bus     扩展
+Car *-- Tire    组合
+Bus o-- Driver  聚合
+
+在关系之间使用标签来说明时, 使用 : 后接 标签文字。
+
+对元素的说明，你可以在每一边使用 "" 来说明。
+
+在标签的开始或结束位置添加 < 或 > 以表明是哪个对象作用到哪个对象上。
+@enduml
+```
+
+图-1 类图基本元素
+
+```plantuml
+@startuml
+note "类图基本元素" as C1
+
+abstract        抽象
+abstract class  抽象(等同abstract)
+annotation      注解
+circle          圆
+()              圆缩写形式
+class           类
+diamond         菱形
+<>              菱形写形式
+entity          实例
+enum            枚举
+interface       接口
+
+车  <|- 小汽车
+小汽车 "1" *-- "4" 轮子 : 拥有 4 >
+小汽车 *-- 发动机 : 驱动 <
+小汽车 o-- 千斤顶
+小汽车 -- 人 : < 所属
+@enduml
+```
+
+#### 5.1.2 扩展类用法
+
+```plantumlcode
+@startuml
+要声明字段和方法，你可以使用符号 : 后面跟着字段或方法的名称。也可以在大括号之间分组 {} 所有字段和方法。
+
+访问权限（方法是实心、变量是空心）：
+    - 正方形 私有
+    # 菱形   保护
+    ~ 三角形 包/类的私有
+    + 圆形   公开
+
+可以采用命令 skinparam classAttributeIconSize 0 来展示特殊符号本身。
+
+模板通过类关键字（ "<<" 和 ">>" ）来定义
+
+可以使用 note left of , note right of , note top of , note bottom of 这些关键字来添加备注。
+你还可以在类的声明末尾使用 note left, note right,note top, note bottom来 添加备注。
+此外，单独用 note 这个关键字也是可以的，使用 .. 符号可以作出一条连接它与其它对象的虚线。
+
+你可以用 < 和 > 来定义类的泛型。
+@enduml
+```
+
+图-2 类图扩展用法
+
+```plantuml
+@startuml
+note "类图访问权限控制" as C2
+
+class Object << general >>
+Object <|- Array
+Object : ~ equals()
+
+note "This is a floating note" as N1
+
+Object .. N1
+N1 .. Array
+
+class Array
+note left: On last defined class
+
+Array : - Object[] datas
+Array : # size()
+class Array {
+    - int size
+    + get_by_index(id)
+}
+@enduml
+```
+
+图-3 显示访问权限文本
+
+```plantuml
+@startuml
+note "类图访问权限控制显示文本" as C3
+
+skinparam classAttributeIconSize 0
+
+Object <|- Array
+Object : ~ equals()
+Array : - Object[] datas
+Array : # size()
+class Array {
+    - int size
+    + get_by_index(id)
+}
+@enduml
+```
+
+图-4 泛型
+
+```plantuml
+@startuml
+note "泛型" as C4
+
+class Foo<? extends Element> {
+  int size()
+}
+Foo *- Element
+@enduml
+```
+
+#### 5.1.3 箭头方向
+
+```plantumlcode
+类之间默认采用两个破折号 -- 显示出垂直 方向的线，要得到水平方向的可以像这样使用单破折号 (或者点)。
+
+可以通过改变倒置链接来改变方向
+
+可通过在箭头内部使用关键字， 例如 left, right, up 或者 down，来改变方向
+
+也支持 left to right direction 参数
+@enduml
+```
+
+图-5 箭头方向
+
+```plantuml
+@startuml
+note "箭头方向控制" as C5
+
+left to right direction
+教室 o- 学生
+老师 .o 教室
+
+教室 *-- 椅子
+教室 *-up- 黑板
+教室 *-- 桌子
+@enduml
+```
+
+#### 5.1.4 分组继承关系
+
+```plantumlcode
+@startuml
+可以合并所有的箭头，使用 skinparam groupInheritance, 用阈值(第几组)作为参数。
+@enduml
+```
+
+图-6 [分组继承关系](http://www.plantuml.com/plantuml/uml/SoWkIImgAStDuIhEpimhI2nAp5L8ByelBV3CoqWjoYn9p4jELJ3aud8qLB2fqTLLS0AnZQ1i8pZJsGWeR0mLDeOpdH5C5sEW2XEe2XCuqnd1T44mNKsu75BpKa3E0W00)
+
+```plantuml
+@startuml
+note "继承关系分组" as C6
+
+skinparam groupInheritance 3
+
+A1 <|-- B1
+
+A2 <|-- B2
+A2 <|-- C2
+
+A3 <|-- B3
+A3 <|-- C3
+A3 <|-- D3
+
+A4 <|-- B4
+A4 <|-- C4
+A4 <|-- D4
+A4 <|-- E4
+@enduml
+```
+
 ### 5.2 [对象图](https://plantuml.com/zh/object-diagram)
+
+显示特定时间，建模系统结构的完整或部分视图的图。
 
 ### 5.3 [组件图](https://plantuml.com/zh/component-diagram)
 
+如何互相组织以构建更大的组件或是软件系统的。
+
 ### 5.4 [部署图](https://plantuml.com/zh/deployment-diagram)
+
+对节点（硬件组件）上工件（软件组件）的物理部署（包括连接方式）进行建模。
 
 ### 5.5 [活动图](https://plantuml.com/zh/activity-diagram-legacy)
 
+用于为计算性和组织性过程（即工作流）建模，相关活动之间的数据流也在其覆盖范围之内。
+
 ### 5.6 [状态图](https://plantuml.com/zh/state-diagram)
+
+对象在其生存期间的动态行为，表现为对象所经历的状态序列，引起状态转移的事件，以及因状态转移而伴随的动作。
 
 ### 5.7 [用例图](https://plantuml.com/zh/use-case-diagram)
 
+用户与系统交互的最简表示形式，展现了用户和与他相关的用例之间的关系。
+
 ### 5.8 [时序图](https://plantuml.com/zh/sequence-diagram)
 
+描述物件在时间序列中的交叉作用。
+
 ### 5.9 [时间图](https://plantuml.com/zh/timing-diagram)
+
+一种特定类型的交互图，其重点是时序约束。探索对象在给定时间段内的行为。时序图是序列图的一种特殊形式。时序图和时序图的区别在于轴是颠倒的。
