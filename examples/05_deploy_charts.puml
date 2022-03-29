@@ -1,0 +1,108 @@
+@startuml
+title 部署图的基本图示-C41
+
+actor actor_multi [
+这是个 <b>文件夹
+----
+您可以使用
+====
+不同类型
+....
+的分隔符
+]
+
+hexagon hexagon_1 {
+    cloud inner_cloud {
+        node node_a
+    }
+    agent agent_a
+}
+
+:actor_simple:
+[component_simple]
+(usecase_simple)
+() interface_simple
+
+    actor     actor
+    agent     agent
+    artifact  artifact
+    boundary  boundary
+    card      card
+    cloud     cloud
+    component component
+    control   control
+    database  database
+    entity    entity
+    file      file
+    folder    folder
+    frame     frame
+    interface interface
+    node      node
+    package   package
+    queue     queue
+    stack     stack
+    rectangle rectangle
+    storage   storage
+    usecase   usecase
+@enduml
+
+
+@startuml
+title 部署图的基本图示-C42
+
+[a]
+[a1]
+[a2]
+[a3]
+[a4]
+[a5]
+[a6]
+[a7]
+[a8]
+[a9]
+
+a  -0)-  a1 : 实线
+a  -(0)- a2 : 实线
+a  -(0-  a1 : 实线
+
+a  ~(0)~ a3
+
+a  ..>>  a1 : 虚线
+a  ~~#   a1 : 点线
+a  ==+   a1 : 粗线
+
+a7 -[#red][bold]-> a8
+a7 -[dashed]-> a8
+a7 -[dotted]-> a8
+a7 -[hidden]-> a8 : 隐藏连线
+a7 -[plain]->  a8
+
+a8 --> a9 : normal
+a8 --> a9 #line:red;line.bold;text:red  : red bold
+a8 --> a9 #green;line.dashed;text:green : green dashed
+a8 --> a9 #blue;line.dotted;text:blue   : blue dotted
+
+a =le(0)=> a4
+a =ri(0)=> a5
+a =do(0)=> a6
+a =up(0)=> a7
+@enduml
+
+
+@startuml
+title 圆角系列语法-C43
+
+skinparam rectangle {
+    roundCorner<<Concept>> 45
+}
+
+rectangle "事件系统" <<Concept>> {
+    rectangle "Example 1" <<Concept>> as ex1
+    rectangle "Another rectangle"
+}
+note left of 事件系统 : "圆角语法"
+
+skinparam roundCorner 15
+
+agent A
+@enduml

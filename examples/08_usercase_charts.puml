@@ -1,0 +1,57 @@
+@startuml
+
+title 用例图基本元素-C71
+
+left to right direction
+
+actor actor_a
+
+(Start)/
+:User:/
+
+User --> Start : 未定义也可以直接\n使用角色\n一个业务用例
+
+note left of User : 这是一个商业用户
+
+User -up-> (向上)
+User -down-> (向下)
+User -left-> (向左)
+User -right-> (向右)
+
+Student --|> User
+
+note left of Useraa : 可以在这里通过 newpage 分割出新页面
+
+rectangle 用户类型 {
+    skinparam actorStyle awesome
+    :actor_b:
+    skinparam actorStyle hollow
+    :actor_c: as c
+}
+
+package 用例组合 {
+
+(第一个用例)
+usecase u2 as "跨越多行的用例描述
+--
+第一行
+..
+第二行
+==
+第三行
+__
+..小结..
+一个多行定义的用例
+"
+(使用别名的用例) as alias_usecase
+}
+
+usecase 使用别名的另一个用例 as alias_usecase_1
+
+使用别名的另一个用例 --|> 第一个用例
+
+actor_a ---> u2
+alias_usecase_1 <<-- actor_a
+
+actor_b ..> 第一个用例
+@enduml

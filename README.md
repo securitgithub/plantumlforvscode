@@ -669,18 +669,177 @@ note "hide @unlinked"   as n2
 
 对节点（硬件组件）上工件（软件组件）的物理部署（包括连接方式）进行建模。
 
+#### 5.4.1 部署图的基本图示
+
 ```plantumlcode
 @startuml
+元素一览：
+    actor/:a:     agent       boundary control        entity
+    interface/()i usecase/(u)
 
+    以下元素可以互相嵌套：
+        artifact  card        cloud     component/[c] database
+        file      folder      frame     hexagon       node
+        package   queue       rectangle stack         storage
+
+使用方括号 [] 放置长描述文本。
 @enduml
 ```
+
+图4-1 部署图的基本图示
 
 ```plantuml
 @startuml
+title 部署图的基本图示-C41
 
+actor actor_multi [
+这是个 <b>文件夹
+----
+您可以使用
+====
+不同类型
+....
+的分隔符
+]
+
+hexagon hexagon_1 {
+    cloud inner_cloud {
+        node node_a
+    }
+    agent agent_a
+}
+
+:actor_simple:
+[component_simple]
+(usecase_simple)
+() interface_simple
+
+    actor     actor
+    agent     agent
+    artifact  artifact
+    boundary  boundary
+    card      card
+    cloud     cloud
+    component component
+    control   control
+    database  database
+    entity    entity
+    file      file
+    folder    folder
+    frame     frame
+    interface interface
+    node      node
+    package   package
+    queue     queue
+    stack     stack
+    rectangle rectangle
+    storage   storage
+    usecase   usecase
 @enduml
 ```
 
+#### 5.4.2 部署图的连接类型
+
+```plantumlcode
+@startuml
+以下 连接、箭头 可以任意组合。
+
+连接类型：
+    -- 实线
+    .. 虚线
+    ~~ 点线
+    == 粗线
+箭头类型：
+    >   箭头
+    *   菱形实心
+    o   菱形空心
+    +   圆形带十字
+    #   方块
+    >>  三角实心箭头
+    0   圆形空心
+    ^   三角空心
+    (0  左方向圆
+    0)  右方向圆
+    (0) 左右方向圆
+
+也可以明确有 bold dashed dotted hidden 或 plain 箭头的关键字
+@enduml
+```
+
+图4-2 部署图的连接类型
+
+```plantuml
+@startuml
+title 部署图的基本图示-C42
+
+[a]
+[a1]
+[a2]
+[a3]
+[a4]
+[a5]
+[a6]
+[a7]
+[a8]
+[a9]
+
+a  -0)-  a1 : 实线
+a  -(0)- a2 : 实线
+a  -(0-  a1 : 实线
+
+a  ~(0)~ a3
+
+a  ..>>  a1 : 虚线
+a  ~~#   a1 : 点线
+a  ==+   a1 : 粗线
+
+a7 -[#red][bold]-> a8
+a7 -[dashed]-> a8
+a7 -[dotted]-> a8
+a7 -[hidden]-> a8 : 隐藏连线
+a7 -[plain]->  a8
+
+a8 --> a9 : normal
+a8 --> a9 #line:red;line.bold;text:red  : red bold
+a8 --> a9 #green;line.dashed;text:green : green dashed
+a8 --> a9 #blue;line.dotted;text:blue   : blue dotted
+
+a =le(0)=> a4
+a =ri(0)=> a5
+a =do(0)=> a6
+a =up(0)=> a7
+@enduml
+```
+
+#### 5.4.3 圆角系列语法
+
+```plantumlcode
+@startuml
+skinparam roundCorner 15 特定的圆角系列图表
+@enduml
+```
+
+图4-3 圆角系列语法
+
+```plantuml
+@startuml
+title 圆角系列语法-C43
+
+skinparam rectangle {
+    roundCorner<<Concept>> 45
+}
+
+rectangle "事件系统" <<Concept>> {
+    rectangle "Example 1" <<Concept>> as ex1
+    rectangle "Another rectangle"
+}
+note left of 事件系统 : "圆角语法"
+
+skinparam roundCorner 15
+
+agent A
+@enduml
+```
 ### 5.5 [活动图](https://plantuml.com/zh/activity-diagram-legacy)
 
 用于为计算性和组织性过程（即工作流）建模，相关活动之间的数据流也在其覆盖范围之内。
@@ -704,6 +863,7 @@ note "hide @unlinked"   as n2
 ```
 
 图5-1 活动图示例
+
 ```plantuml
 @startuml
 title 活动图示例-C51
@@ -896,15 +1056,99 @@ a --> [*]
 
 用户与系统交互的最简表示形式，展现了用户和与他相关的用例之间的关系。
 
+#### 5.7.1 用例图基本元素
+
 ```plantumlcode
 @startuml
 
+actor 或者 :name: 可以创建一个 角色。
+
+角色的样式从默认的火柴人改成：
+    用户头像样式：skinparam actorStyle awesome
+    透明人样式：skinparam actorStyle hollow
+
+usecase 或者 (name) 可以创建一个 用例。
+可一个用例使用分隔符：
+    -- 横线
+    .. 虚线
+    == 双横线
+    __ 下划线
+
+使用 rectangle 来改变包的外观。
+
+用箭头 --> 连接角色和用例。横杠 - 越多，箭头越长。
+
+如果一个角色或者用例继承于另一个，那么可以用 <|-- 符号表示。
+
+类之间的链接有两个破折号 -- ，并且是垂直方向的。 可以通过像这样放一个破折号（或点）来使用水平链接。
+
+用 newpage 关键字将图示分解为多个页面。
+
+默认从上往下构建图示。left to right direction 或 top to bottom direction 命令改变图示方向。
+
+可以添加 / 来制作业务用例
 @enduml
 ```
+
+图7-1 用例图基本元素
 
 ```plantuml
 @startuml
 
+title 用例图基本元素-C71
+
+left to right direction
+
+actor actor_a
+
+(Start)/
+:User:/
+
+User --> Start : 未定义也可以直接\n使用角色\n一个业务用例
+
+note left of User : 这是一个商业用户
+
+User -up-> (向上)
+User -down-> (向下)
+User -left-> (向左)
+User -right-> (向右)
+
+Student --|> User
+
+note left of Useraa : 可以在这里通过 newpage 分割出新页面
+
+rectangle 用户类型 {
+    skinparam actorStyle awesome
+    :actor_b:
+    skinparam actorStyle hollow
+    :actor_c: as c
+}
+
+package 用例组合 {
+
+(第一个用例)
+usecase u2 as "跨越多行的用例描述
+--
+第一行
+..
+第二行
+==
+第三行
+__
+..小结..
+一个多行定义的用例
+"
+(使用别名的用例) as alias_usecase
+}
+
+usecase 使用别名的另一个用例 as alias_usecase_1
+
+使用别名的另一个用例 --|> 第一个用例
+
+actor_a ---> u2
+alias_usecase_1 <<-- actor_a
+
+actor_b ..> 第一个用例
 @enduml
 ```
 
@@ -912,7 +1156,7 @@ a --> [*]
 
 描述物件在时间序列中的交叉作用。
 
-### 5.8.1 时序图基本概念
+#### 5.8.1 时序图基本概念
 
 ```plantumlcode
 @startuml
