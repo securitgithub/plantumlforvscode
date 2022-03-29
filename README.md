@@ -975,7 +975,7 @@ a1 --> a8 : To queue
 @enduml
 ```
 
-#### 5.8.2 一些特殊的用法
+#### 5.8.2 箭头及一些其他用法
 
 ```plantumlcode
 @startuml
@@ -998,19 +998,33 @@ a1 --> a8 : To queue
 
 使用 note left 或 note right 关键字在信息后面加上注释。 使用 end note 关键字有一个多行注释。
 
-note across: 备注描述 所有参与者之间添加备注
+note across: 备注描述 所有参与者之间添加备注。
 
-hnote rnote 改变备注的描述为六边形、正方形
+hnote rnote 改变备注的描述为六边形、正方形。
+
+使用 / 可以在同一级对齐多个备注
+
+使用 == 关键词来将你的图表分割成多个逻辑步骤。
+
+使用 ref over 关键词来实现引用
 @enduml
 ```
 
-图8-2 一些特殊的用法
+图8-2 箭头及一些其他用法
 
 ```plantuml
-title 一些特殊的用法-C82
+@startuml
+title 箭头及一些其他用法-C82
 
 skinparam responseMessageBelowArrow true
 autonumber
+
+ref over A,B : init
+
+ref over B
+  online
+  another line
+end ref
 
 note across : "所有参与者一起备注"
 
@@ -1022,11 +1036,15 @@ A -\  B : 顶部箭头
 A -/  B : 底部箭头
 A ->> B : 尖头箭头
 
+==初始化==
+
 note left : "`newpage` 可以把同一个图分页显示"
 
 autonumber 10 "<b>[00]"
 A -\\ B : 顶部尖头箭头
 note right : "右侧注释"
+note over A : "同级 note"
+/note over B : "`/` 同级 note 平行"
 A -// B : 底部尖头箭头
 note left
 多行注释
@@ -1042,9 +1060,94 @@ rnote over B
     描述
 endrnote
 
+==测试==
+
 autonumber 40 5 "<b>(<u>##</u>)"
 A <-> B : 双向箭头
 A ->o B : 带端的箭头
+@enduml
+```
+
+#### 5.8.3 生命线及一些其他用法
+
+```plantumlcode
+@startuml
+关键字 activate 和 deactivate 用来表示参与者的生命活动。一旦参与者被激活，它的生命线就会显示出来。
+
+关键字 destroy 表示一个参与者的生命线的终结。
+
+自动激活关键字 autoactivate/return，这需要与 return 关键字配合。
+
+激活、撤销和创建的快捷语法：
+    ++ 激活目标（可选择在后面加上 #color）
+    -- 撤销激活源
+    ** 创建目标实例
+    !! 销毁目标实例
+
+关键字 create 放在第一次接收到消息之前，以强调本次消息实际上是在创建新的对象。
+
+可以使用 << 和 >>给参与者添加构造类型。在构造类型中，你可以使用 (X,color) 格式的语法添加一个圆圈圈起来的字符。
+
+使用 box 和 end box 画一个盒子将参与者包裹起来。
+@enduml
+```
+
+图8-3 生命线及一些其他用法
+
+```plantuml
+@startuml
+title 生命线及一些其他用法-C83
+
+participant User << (C, #Red) player >>
+
+box A-B process
+
+User --> A : DoWork
+activate A
+
+A --> A : InternalCall
+activate A #red
+
+A --> B : Request
+activate B
+end box
+B --> C : DoWork
+activate C
+B <-- C : WorkDone
+destroy C
+
+B --> A : Response
+deactivate B
+
+A --> User : Done
+deactivate  A
+
+create control String
+
+A -> String : Store log
+@enduml
+```
+
+图8-4 自动激活时间线
+
+```plantuml
+@startuml
+title 自动激活时间线-C84
+
+autoactivate on
+A -> B : hello
+B -> B : self call
+B <- C : hello from C
+return B to C
+return B to B
+return B to A
+
+C <- B  : delete
+return C deleted
+B -> C !! :delete
+A -> B : done?
+return sucess
+
 @enduml
 ```
 

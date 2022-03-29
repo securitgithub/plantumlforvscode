@@ -1,0 +1,143 @@
+@startuml
+title 时序图基本概念-C81
+
+actor Alic #red
+
+Alic ->  Bob  : 授权请求
+Bob  --> Alic : 授权返回
+
+Alic ->  Bob  : 另外一个授权请求
+Alic <-- Bob  : 另外一个授权返回一
+Alic <-  Bob  : 另外一个授权返回二
+
+participant 参与者 [
+    =姓
+    ---
+    ""名字""
+]
+
+participant 参与者 as a1 #99FF99
+actor       角色   as a2 order 1
+boundary    边界   as a3
+control     控制   as a4
+entity      实体   as a5
+database    数据库 as a6
+collections 集合   as a7 order 2
+queue       队列   as a8
+a1 --> a1 : 自己给自己发消息
+a1 ->  a2 : To actor \nnew line
+a1 --> a3 : To boundary
+a4 <-  a1 : To control
+a5 <-- a1 : To entity
+a1 --> a6 : To database
+a1 --> a7 : To collections
+a1 --> a8 : To queue
+@enduml
+
+
+@startuml
+title 箭头及一些其他用法-C82
+
+skinparam responseMessageBelowArrow true
+autonumber
+
+ref over A,B : init
+
+ref over B
+  online
+  another line
+end ref
+
+note across : "所有参与者一起备注"
+
+A -> B : request
+B --> A : reponse
+
+A -[#red]>x B : 丢弃消息
+A -\  B : 顶部箭头
+A -/  B : 底部箭头
+A ->> B : 尖头箭头
+
+==初始化==
+
+note left : "`newpage` 可以把同一个图分页显示"
+
+autonumber 10 "<b>[00]"
+A -\\ B : 顶部尖头箭头
+note right : "右侧注释"
+note over A : "同级 note"
+/note over B : "`/` 同级 note 平行"
+A -// B : 底部尖头箭头
+note left
+多行注释
+第二行
+end note
+A --> B : 点状箭头
+hnote over A : 六边形描述
+autonumber stop
+A ->  B : 实线箭头
+rnote over B
+    多行
+    文本
+    描述
+endrnote
+
+==测试==
+
+autonumber 40 5 "<b>(<u>##</u>)"
+A <-> B : 双向箭头
+A ->o B : 带端的箭头
+@enduml
+
+
+@startuml
+title 生命线及一些其他用法-C83
+
+participant User << (C, #Red) player >>
+
+box A-B process
+
+User --> A : DoWork
+activate A
+
+A --> A : InternalCall
+activate A #red
+
+A --> B : Request
+activate B
+end box
+B --> C : DoWork
+activate C
+B <-- C : WorkDone
+destroy C
+
+B --> A : Response
+deactivate B
+
+A --> User : Done
+deactivate  A
+
+create control String
+
+A -> String : Store log
+@enduml
+
+
+@startuml
+title 自动激活时间线-C84
+
+autoactivate on
+A -> B : hello
+B -> B : self call
+B <- C : hello from C
+return B to C
+return B to B
+return B to A
+
+C <- B  : delete
+return C deleted
+B -> C !! :delete
+A -> B : done?
+return sucess
+
+@enduml
