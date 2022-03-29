@@ -1,9 +1,158 @@
 @startmindmap
+title UML模型的分类-cH1
+
 * UML 类型
 ** 功能模型
-*** 从用户的角度展示系统的功能，包括：用例图
+*** 从用户的角度展示系统的功能
+**** 用例图
 ** 对象模型
-*** 采用 对象、属性、操作、关联等概念展示系统的结构和基础，包括：类别图，对象图
+*** 采用 对象、属性、操作、关联等概念展示系统的结构和基础
+**** 类别图
+**** 对象图
 ** 动态模型
-*** 展示系统的内部行为，包括：时序图、活动图、状态图
+*** 展示系统的内部行为
+**** 时序图
+**** 活动图
+**** 状态图
+@endmindmap
+
+
+@startmindmap
+title 14 种 UML 图表一览-cH2
+
+*[#Orange] UML 图形
+    ** 结构性图形
+        ***_ 静态图
+            ****[#Skyblue] 类图
+            ****[#Skyblue] 对象图
+            **** 包图
+        ***_ 实现图
+            ****[#Skyblue] 组件图
+            ****[#Skyblue] 部署图
+        *** 剖面图
+        *** 复合结构图
+    left side
+    ** 行为式图形
+        ***[#Skyblue] 活动图
+        ***[#Skyblue] 状态图
+        ***[#Skyblue] 用例图
+        *** 交互性图形
+    *** 展示系统的内部行为
+        **** 通信图
+        **** 交互概述图
+        ****[#Skyblue] 时序图
+        ****[#Skyblue] 时间图
+@endmindmap
+
+
+@startwbs
+title UML 中的基本概念-cH3
+
+* UML
+** 结构类
+***> 执行者
+***< 包
+***< 类
+***< 属性
+***< 接口
+***> 组件
+***> 对象
+** 行为类
+***> 活动
+***< 事件
+***< 消息
+***< 方法
+***> 状态
+***> 用例
+** 其他类
+***< 构造型
+***< 多重性
+***< 角色
+** 关系类
+***> 继承/泛化（Generalization）
+***< 实现（Realization）
+***> 关联（Association）
+****> 组合（Composition）
+****> 聚合（Aggregation）
+***> 依赖（Dependency）
+@endwbs
+
+
+@startuml
+title UML 关系类的描述-cH4
+
+note "继承 = 实现 \n> 组合 \n> 聚合 \n> 关联 \n> 依赖" as note1
+
+top to bottom direction
+
+package 继承和实现关系 {
+    interface 动物接口
+    class 动物
+    class 老虎
+    interface 老虎接口
+    动物 <|-- 老虎 : 继承关系
+    动物接口 <|.. 动物 : 实现关系
+    动物接口 <|-- 老虎接口  : 继承关系
+    老虎接口 <|.. 老虎 : 实现关系
+}
+
+package 组合关系 {
+    class 公司
+    class 部门
+    公司 "1" *.. "n" 部门 : 组合关系
+}
+
+package 聚合关系 {
+    class 汽车
+    class 轮子
+    class 引擎
+    汽车 "1" o-- "4" 轮子 : 聚合关系
+    汽车 "1" o-- "1" 引擎 : 聚合关系
+}
+
+package 关联关系 {
+    class 学生
+    class 老师
+    class 课程
+    老师 "n" --  "n" 学生 : 关联关系
+    学生 "1" --> "n" 课程 : 关联关系
+}
+
+package 依赖关系 {
+    class 人类
+    class 水
+    class 氧气
+    人类 <.. 氧气 : 依赖关系
+    人类 <.. 水   : 依赖关系
+}
+@enduml
+
+
+@startwbs
+title PlantUML 支持的 9 种 UML 图表-cH5
+
+* PlantUML 支持的 UML 图形
+** 结构性图形
+***[#Skyblue]< 类图
+***[#Skyblue]< 对象图
+***[#Skyblue] 组件图
+***[#Skyblue] 部署图
+** 行为性图行
+***[#Skyblue]< 活动图
+***[#Skyblue]< 状态图
+***[#Skyblue]< 用例图
+***[#Skyblue] 时序图
+***[#Skyblue] 时间图
+@endwbs
+
+
+@startmindmap
+title Markdown 文件中 PlantUML 语法的使用-cH6
+* A
+** A.1
+*** A.1.1
+** B
+*** B.1
+** C
+*** C.1
 @endmindmap

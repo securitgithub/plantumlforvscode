@@ -26,7 +26,7 @@ UML 中划分为 模型 和 图形 两大类。
 
 图-1 UML 模型的分类
 
-``` plantumlcode
+``` plantuml
 @startmindmap
 title UML模型的分类-cH1
 
@@ -45,8 +45,6 @@ title UML模型的分类-cH1
 **** 状态图
 @endmindmap
 ```
-
-![UML模型的分类-cH1](./assets/ch1.png)
 
 ### 2.2 图形
 
@@ -76,7 +74,7 @@ UML 2.2 中一共定义了 14 种图示：
 
 图-2 14 种 UML 图表一览
 
-```plantumlcode
+```plantuml
 @startmindmap
 title 14 种 UML 图表一览-cH2
 
@@ -105,8 +103,6 @@ title 14 种 UML 图表一览-cH2
 @endmindmap
 ```
 
-![14 种 UML 图表一览-cH2](./assets/ch2.png)
-
 ### 2.3 模型和图形的区别
 
 1. UML 图，包括：用例图、协作图、活动图、序列图、部署图、构件图、类图、状态图，是 **模型中信息的图形表达方式，但是 UML 模型独立于 UML 图存在**。
@@ -117,7 +113,7 @@ title 14 种 UML 图表一览-cH2
 
 图-3 UML 中的基本概念
 
-```plantumlcode
+```plantuml
 @startwbs
 title UML 中的基本概念-cH3
 
@@ -151,11 +147,9 @@ title UML 中的基本概念-cH3
 @endwbs
 ```
 
-![UML 中的基本概念-cH3](./assets/ch3.png)
-
 图-4 UML 关系类的描述
 
-```plantumlcode
+```plantuml
 @startuml
 title UML 关系类的描述-cH4
 
@@ -206,8 +200,6 @@ package 依赖关系 {
 @enduml
 ```
 
-![UML 关系类的描述-cH4](./assets/ch4.png)
-
 ## 3. PlantUML
 
 ### 3.1 支持 9 种 UML 图形
@@ -218,7 +210,7 @@ package 依赖关系 {
 
 图-5 PlantUML 支持的 9 种 UML 图表
 
-```plantumlcode
+```plantuml
 @startwbs
 title PlantUML 支持的 9 种 UML 图表-cH5
 
@@ -236,8 +228,6 @@ title PlantUML 支持的 9 种 UML 图表-cH5
 ***[#Skyblue] 时间图
 @endwbs
 ```
-
-![PlantUML 支持的 9 种 UML 图表-cH5](./assets/ch5.png)
 
 2. PlantUML 中使用 UML 的语法结构：
 
@@ -278,10 +268,9 @@ title PlantUML 支持的 9 种 UML 图表-cH5
 
 图-6 Markdown 文件中 PlantUML 语法的使用
 
-```plantumlcode
+```plantuml
 @startmindmap
 title Markdown 文件中 PlantUML 语法的使用-cH6
-
 * A
 ** A.1
 *** A.1.1
@@ -291,8 +280,6 @@ title Markdown 文件中 PlantUML 语法的使用-cH6
 *** C.1
 @endmindmap
 ```
-
-![Markdown 文件中 PlantUML 语法的使用-cH6](./assets/ch6.png)
 
 ## 4. UML 的开发软件
 
@@ -362,7 +349,7 @@ Bus o-- Driver  聚合
 
 图1-1 类图基本元素
 
-```plantumlcode
+```plantuml
 @startuml
 title 类图基本元素-c11
 
@@ -385,8 +372,6 @@ interface       接口
 小汽车 -- 人 : < 所属
 @enduml
 ```
-
-![类图基本元素-c11](./assets/c11.png)
 
 #### 5.1.2 扩展类用法
 
@@ -414,7 +399,7 @@ interface       接口
 
 图1-2 类图扩展用法
 
-```plantumlcode
+```plantuml
 @startuml
 title 类图访问权限控制-c12
 
@@ -439,11 +424,9 @@ class Array {
 @enduml
 ```
 
-![类图访问权限控制-c12](./assets/c12.png)
-
 图1-3 显示访问权限文本
 
-```plantumlcode
+```plantuml
 @startuml
 title 类图访问权限控制显示文本-c13
 
@@ -460,11 +443,9 @@ class Array {
 @enduml
 ```
 
-![类图访问权限控制显示文本-c13](./assets/c13.png)
-
 图1-4 泛型
 
-```plantumlcode
+```plantuml
 @startuml
 title 泛型-c14
 
@@ -474,8 +455,6 @@ class Foo<? extends Element> {
 Foo *- Element
 @enduml
 ```
-
-![类图访问权限控制显示文本-c14](./assets/c14.png)
 
 #### 5.1.3 箭头方向
 
@@ -492,7 +471,7 @@ Foo *- Element
 
 图1-5 箭头方向
 
-```plantumlcode
+```plantuml
 @startuml
 title 箭头方向控制-c15
 
@@ -506,8 +485,6 @@ left to right direction
 @enduml
 ```
 
-![箭头方向控制-c15](./assets/c15.png)
-
 #### 5.1.4 分组继承关系
 
 ```plantumlcode
@@ -518,7 +495,7 @@ left to right direction
 
 图1-6 [分组继承关系](http://www.plantuml.com/plantuml/uml/SoWkIImgAStDuIhEpimhI2nAp5L8ByelBV3CoqWjoYn9p4jELJ3aud8qLB2fqTLLS0AnZQ1i8pZJsGWeR0mLDeOpdH5C5sEW2XEe2XCuqnd1T44mNKsu75BpKa3E0W00)
 
-```plantumlcode
+```plantuml
 @startuml
 title 继承关系分组-c16
 
@@ -539,8 +516,6 @@ A4 <|-- D4
 A4 <|-- E4
 @enduml
 ```
-
-![继承关系分组-c16](./assets/c16.png)
 
 ### 5.2 [对象图](https://plantuml.com/zh/object-diagram)
 
@@ -565,7 +540,7 @@ A4 <|-- E4
 
 图2-1 对象的基本定义
 
-```plantumlcode
+```plantuml
 @startuml
 title 对象的基本定义-c21
 
@@ -609,8 +584,6 @@ dia --> a3
 @enduml
 ```
 
-![对象的基本定义-c21](./assets/c21.png)
-
 #### 5.2.2 关联数据的显示（map）
 
 ```plantumlcode
@@ -625,7 +598,7 @@ dia --> a3
 
 图2-2 关联数据的显示
 
-```plantumlcode
+```plantuml
 @startuml
 title 关联数据的显示-c22
 
@@ -658,8 +631,6 @@ student_id2s --> student_id3s
 @enduml
 ```
 
-![关联数据的显示-c22](./assets/c22.png)
-
 ### 5.3 [组件图](https://plantuml.com/zh/component-diagram)
 
 如何互相组织以构建更大的组件或是软件系统的。
@@ -682,7 +653,7 @@ student_id2s --> student_id3s
 
 图3-1 组件图的基本定义
 
-```plantumlcode
+```plantuml
 @startuml
 title 组件图的基本定义-c31
 
@@ -709,8 +680,6 @@ Interf3 -- i3
 @enduml
 ```
 
-![组件图的基本定义-c31](./assets/c31.png)
-
 #### 5.3.2 组件图的高级用法
 
 ```plantumlcode
@@ -728,7 +697,7 @@ hide @unlinked 或 remove @unlinked 可以隐藏没事用到的组件或者接�
 
 图3-2 组件图多关键字的组合
 
-```plantumlcode
+```plantuml
 @startuml
 title 组件图多关键字的组合-c32
 
@@ -775,8 +744,6 @@ note "hide @unlinked"   as n2
 @enduml
 ```
 
-![组件图多关键字的组合-c32](./assets/c32.png)
-
 ### 5.4 [部署图](https://plantuml.com/zh/deployment-diagram)
 
 对节点（硬件组件）上工件（软件组件）的物理部署（包括连接方式）进行建模。
@@ -800,7 +767,7 @@ note "hide @unlinked"   as n2
 
 图4-1 部署图的基本图示
 
-```plantumlcode
+```plantuml
 @startuml
 title 部署图的基本图示-c41
 
@@ -850,8 +817,6 @@ usecase   usecase
 @enduml
 ```
 
-![部署图的基本图示-c41](./assets/c41.png)
-
 #### 5.4.2 部署图的连接类型
 
 ```plantumlcode
@@ -882,7 +847,7 @@ usecase   usecase
 
 图4-2 部署图的连接类型
 
-```plantumlcode
+```plantuml
 @startuml
 title 部署图的基本图示-c42
 
@@ -925,8 +890,6 @@ a =up(0)=> a7
 @enduml
 ```
 
-![部署图的基本图示-c42](./assets/c42.png)
-
 #### 5.4.3 圆角系列语法
 
 ```plantumlcode
@@ -937,7 +900,7 @@ skinparam roundCorner 15 特定的圆角系列图表
 
 图4-3 圆角系列语法
 
-```plantumlcode
+```plantuml
 @startuml
 title 圆角系列语法-c43
 
@@ -956,8 +919,6 @@ skinparam roundCorner 15
 agent A
 @enduml
 ```
-
-![圆角系列语法-c43](./assets/c43.png)
 
 ### 5.5 [活动图](https://plantuml.com/zh/activity-diagram-legacy)
 
@@ -983,7 +944,7 @@ agent A
 
 图5-1 活动图示例
 
-```plantumlcode
+```plantuml
 @startuml
 title 活动图示例-c51
 
@@ -992,8 +953,6 @@ c -up-> [转向第二个活动] "第二个活动" as d
 d -do-> (*)
 @enduml
 ```
-
-![活动图示例-c51](./assets/c51.png)
 
 #### 5.5.2 分支控制
 
@@ -1011,7 +970,7 @@ d -do-> (*)
 
 图5-2 分支控制
 
-```plantumlcode
+```plantuml
 @startuml
 title 分支控制-c52
 
@@ -1047,8 +1006,6 @@ sw --> ===结束===
 @enduml
 ```
 
-![分支控制-c52](./assets/c52.png)
-
 ### 5.6 [状态图](https://plantuml.com/zh/state-diagram)
 
 对象在其生存期间的动态行为，表现为对象所经历的状态序列，引起状态转移的事件，以及因状态转移而伴随的动作。
@@ -1080,7 +1037,7 @@ sw --> ===结束===
 
 图6-1 状态图示例
 
-```plantumlcode
+```plantuml
 @startuml
 title 状态图示例-c61
 
@@ -1133,8 +1090,6 @@ state 状态合成的状态 {
 @enduml
 ```
 
-![状态图示例-c61](./assets/c61.png)
-
 #### 5.6.2 状态图其他语法
 
 ```plantumlcode
@@ -1150,7 +1105,7 @@ note on link/end note 可以用来描述状态连线或链接
 
 图6-2 状态图其他语法
 
-```plantumlcode
+```plantuml
 @startuml
 title 状态图其他语法-c62
 
@@ -1176,8 +1131,6 @@ a --> eout
 a --> [*]
 @enduml
 ```
-
-![状态图其他语法-c62](./assets/c62.png)
 
 ### 5.7 [用例图](https://plantuml.com/zh/use-case-diagram)
 
@@ -1219,7 +1172,7 @@ usecase 或者 (name) 可以创建一个 用例。
 
 图7-1 用例图基本元素
 
-```plantumlcode
+```plantuml
 @startuml
 
 title 用例图基本元素-c71
@@ -1279,8 +1232,6 @@ actor_b ..> 第一个用例
 @enduml
 ```
 
-![用例图基本元素-c71](./assets/c71.png)
-
 ### 5.8 [时序图](https://plantuml.com/zh/sequence-diagram)
 
 描述物件在时间序列中的交叉作用。
@@ -1310,7 +1261,7 @@ actor_b ..> 第一个用例
 
 图8-1 时序图基本概念
 
-```plantumlcode
+```plantuml
 @startuml
 title 时序图基本概念-c81
 
@@ -1347,8 +1298,6 @@ a1 --> a7 : To collections
 a1 --> a8 : To queue
 @enduml
 ```
-
-![时序图基本概念-c81](./assets/c81.png)
 
 #### 5.8.2 箭头及一些其他用法
 
@@ -1387,7 +1336,7 @@ hnote rnote 改变备注的描述为六边形、正方形。
 
 图8-2 箭头及一些其他用法
 
-```plantumlcode
+```plantuml
 @startuml
 title 箭头及一些其他用法-c82
 
@@ -1443,8 +1392,6 @@ A ->o B : 带端的箭头
 @enduml
 ```
 
-![箭头及一些其他用法-c82](./assets/c82.png)
-
 #### 5.8.3 生命线及一些其他用法
 
 ```plantumlcode
@@ -1471,7 +1418,7 @@ A ->o B : 带端的箭头
 
 图8-3 生命线及一些其他用法
 
-```plantumlcode
+```plantuml
 @startuml
 title 生命线及一些其他用法-c83
 
@@ -1505,11 +1452,9 @@ A -> String : Store log
 @enduml
 ```
 
-![生命线及一些其他用法-c83](./assets/c83.png)
-
 图8-4 自动激活时间线
 
-```plantumlcode
+```plantuml
 @startuml
 title 自动激活时间线-c84
 
@@ -1529,8 +1474,6 @@ return sucess
 
 @enduml
 ```
-
-![自动激活时间线-c84](./assets/c84.png)
 
 ### 5.9 [时间图](https://plantuml.com/zh/timing-diagram)
 
@@ -1555,7 +1498,7 @@ has 可以定义状态
 
 图9-1 时间图基本概念
 
-```plantumlcode
+```plantuml
 @startuml
 title 时间图基本概念-c91
 
@@ -1589,8 +1532,6 @@ wu is 空闲
 @enduml
 ```
 
-![时间图基本概念-c91](./assets/c91.png)
-
 #### 5.9.2 时间图的其他描述
 
 ```plantumlcode
@@ -1608,7 +1549,7 @@ wu is 空闲
 
 图9-2 时间图的其他描述
 
-```plantumlcode
+```plantuml
 @startuml
 title 时间图的其他描述-c92
 
@@ -1634,15 +1575,13 @@ EN is 高电压
 @enduml
 ```
 
-![时间图的其他描述-c92](./assets/c92.png)
-
 ## 附录
 
 ### 1. 箭头一览
 
 图-1 箭头一览
 
-```plantumlcode
+```plantuml
 @startuml
 title 箭头一览-cB1
 participant Alice as a
@@ -1670,11 +1609,9 @@ a x->o   b : ""x->o ""
 @enduml
 ```
 
-![箭头一览-cB1](./assets/cb1.png)
-
 图-2 所有类型的箭头或 "0 "箭头
 
-```plantumlcode
+```plantuml
 @startuml
 title 所有类型的箭头或 "0 "箭头-cB2
 
@@ -1697,5 +1634,3 @@ f1  -->   b1  : ""--> ""
 f0  --    b0  : ""--  ""
 @enduml
 ```
-
-![所有类型的箭头或 "0 "箭头-cB2](./assets/cb2.png)

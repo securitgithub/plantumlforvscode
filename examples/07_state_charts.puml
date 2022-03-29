@@ -1,6 +1,6 @@
 ```plantuml
 @startuml
-title 状态图示例-C61
+title 状态图示例-c61
 
 note "`hide empty description` 来隐藏没有描述的状态" as note1
 
@@ -51,7 +51,7 @@ state 状态合成的状态 {
 @enduml
 
 @startuml
-title 状态图其他语法-C62
+title 状态图其他语法-c62
 
 state "pentry" as a  <<entryPoint>>
 state pexit  <<exitPoint>>

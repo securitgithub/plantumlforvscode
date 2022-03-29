@@ -1,5 +1,5 @@
 @startuml
-title 部署图的基本图示-C41
+title 部署图的基本图示-c41
 
 actor actor_multi [
 这是个 <b>文件夹
@@ -48,7 +48,7 @@ hexagon hexagon_1 {
 
 
 @startuml
-title 部署图的基本图示-C42
+title 部署图的基本图示-c42
 
 [a]
 [a1]
@@ -90,7 +90,7 @@ a =up(0)=> a7
 
 
 @startuml
-title 圆角系列语法-C43
+title 圆角系列语法-c43
 
 skinparam rectangle {
     roundCorner<<Concept>> 45

@@ -1,5 +1,5 @@
 @startuml
-title 时间图基本概念-C91
+title 时间图基本概念-c91
 
 robust  "Web 浏览器" as wb
 concise "Web 用户"   as wu
@@ -32,7 +32,7 @@ wu is 空闲
 
 
 @startuml
-title 时间图的其他描述-C92
+title 时间图的其他描述-c92
 
 header: 页眉
 footer: 页脚

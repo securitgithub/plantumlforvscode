@@ -1,5 +1,5 @@
 @startuml
-title 活动图示例-C51
+title 活动图示例-c51
 
 (*top) -left-> "第一个活动图" as c
 c -up-> [转向第二个活动] "第二个活动" as d
@@ -8,7 +8,7 @@ d -do-> (*)
 
 
 @startuml
-title 分支控制-C52
+title 分支控制-c52
 
 (*) -right-> "初始化" as a1
 partition math {

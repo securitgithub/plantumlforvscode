@@ -1,5 +1,5 @@
 @startuml
-title 组件图的基本定义-C31
+title 组件图的基本定义-c31
 
 left to right direction
 
@@ -25,7 +25,7 @@ Interf3 -- i3
 
 
 @startuml
-title 组件图多关键字的组合-C32
+title 组件图多关键字的组合-c32
 
 skinparam componentStyle uml1
 skinparam componentStyle rectangle

@@ -1,5 +1,5 @@
 @startuml
-title 时序图基本概念-C81
+title 时序图基本概念-c81
 
 actor Alic #red
 
@@ -36,7 +36,7 @@ a1 --> a8 : To queue
 
 
 @startuml
-title 箭头及一些其他用法-C82
+title 箭头及一些其他用法-c82
 
 skinparam responseMessageBelowArrow true
 autonumber
@@ -91,7 +91,7 @@ A ->o B : 带端的箭头
 
 
 @startuml
-title 生命线及一些其他用法-C83
+title 生命线及一些其他用法-c83
 
 participant User << (C, #Red) player >>
 
@@ -124,7 +124,7 @@ A -> String : Store log
 
 
 @startuml
-title 自动激活时间线-C84
+title 自动激活时间线-c84
 
 autoactivate on
 A -> B : hello

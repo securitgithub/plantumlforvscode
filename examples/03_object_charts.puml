@@ -1,5 +1,5 @@
 @startuml
-title 对象的基本定义-C21
+title 对象的基本定义-c21
 
 object 汽车
 object "另外一种方式定义车轮 " as oo2
@@ -41,7 +41,7 @@ dia --> a3
 @enduml
 
 @startuml
-title 关联数据的显示-C22
+title 关联数据的显示-c22
 
 left to right direction
 
