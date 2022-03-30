@@ -325,6 +325,12 @@ title Markdown 文件中 PlantUML 语法的使用-cH6
 
 ![导出功能](./assets/05-plant-export.png)
 
+### 4.4 MarkDown 相关插件
+
+1. [vscode all markdown](https://marketplace.visualstudio.com/items?itemName=TobiasTao.vscode-md) ： markdowm vscode 下编辑插件，可视化。
+2. [markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint) ：markdown 语法检测和规范。
+3. [Markdown Editor](https://marketplace.visualstudio.com/items?itemName=zaaack.markdown-editor) ：markdown vscode 下编辑器插件，可视化。
+
 ## 5. PlantUML 中 UML 图形使用介绍
 
 这里将依次介绍 9 中 UML 图例的 PlantUML 常用语法（详情请见[官方文档](https://plantuml.com/zh/sitemap-language-specification)）。
