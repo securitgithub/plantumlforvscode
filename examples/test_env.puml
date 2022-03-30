@@ -1,5 +1,11 @@
 @startuml
+title ÃüÁîĞĞµ¼³ö²âÊÔ
+
 class A
 class B
 A <|- B
+
+header: Ò³Ã¼
+footer: Ò³½Å
+caption Í¼Àı
 @enduml
