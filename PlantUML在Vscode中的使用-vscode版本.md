@@ -347,6 +347,7 @@ title Markdown 文件中 PlantUML 语法的使用-cH6
 1. 安装 [vscode](https://code.visualstudio.com/)， 假如你还没有的话，可以去 [官网下载](https://code.visualstudio.com/) 下载并安装。
 2. 安装 PlantUML:
    2.1 打开网页版 [PlantUML](https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml)，选择 安装也可以：
+
    ![PlantUML WEB 安装图示](./assets/02-PlantUML-WEB-Install.png)
 
    2.2 打开 vscode，打开插件管理（可以通过快捷键 `Ctrl+Shift+X` 打开），搜索 `plantuml` 安装 PlantUML 插件：
