@@ -1,4 +1,4 @@
-# [PlantUML](https://plantuml.com/zh/) 在 [vscode](https://code.visualstudio.com/) 中的使用
+# 如何在 [vscode](https://code.visualstudio.com/) 中使用 [PlantUML](https://plantuml.com/zh/) 画 UML 图
 
 **目录**
   - [1. 什么是 UML ？](#1-%E4%BB%80%E4%B9%88%E6%98%AF-uml-)
@@ -49,6 +49,16 @@
       - [5.9.2 时间图的其他描述](#592-%E6%97%B6%E9%97%B4%E5%9B%BE%E7%9A%84%E5%85%B6%E4%BB%96%E6%8F%8F%E8%BF%B0)
   - [附录](#%E9%99%84%E5%BD%95)
     - [1. 箭头一览](#1-%E7%AE%AD%E5%A4%B4%E4%B8%80%E8%A7%88)
+
+---
+一个简单的总结，如何在 vscode 中使用 PlantUML 画 UML 相关的图形。
+
+附件：
+1. 原版，直接在 vscode 打开，显示图例 [如何在vscode中使用PlantUML画UML图](/如何在vscode中使用PlantUML画UML图.md)
+2. 相关插件安装 —— [vscode中PlantUML相关插件](/vscode中PlantUML相关插件.md)
+3. 所有图例 [图例目录][/examples]
+4.
+---
 
 ## 1. 什么是 UML ？
 

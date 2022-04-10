@@ -1,4 +1,4 @@
-## PlantUML 的 vscode 开发插件
+## vscode 中 PlantUML 相关开发插件
 
 ### PlantUml 插件
 

@@ -1,4 +1,4 @@
-# [PlantUML](https://plantuml.com/zh/) 在 [vscode](https://code.visualstudio.com/) 中的使用
+# 如何在 [vscode](https://code.visualstudio.com/) 中使用 [PlantUML](https://plantuml.com/zh/) 画 UML 图
 
 **目录**
   - [1. 什么是 UML ？](#1-%E4%BB%80%E4%B9%88%E6%98%AF-uml-)
