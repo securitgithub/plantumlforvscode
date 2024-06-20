@@ -1,1 +1,25 @@
 
+@startuml
+!define RECTANGLE class
+
+RECTANGLE 图书管理系统
+RECTANGLE 自助设备
+RECTANGLE 微服务大厅
+RECTANGLE 聚合支付模块
+RECTANGLE 招商银行支付平台
+RECTANGLE 微信支付
+RECTANGLE 支付宝支付
+RECTANGLE 用户
+
+图书管理系统 -down-> 聚合支付模块 : 使用
+自助设备 -down-> 聚合支付模块 : 使用
+微服务大厅 -down-> 聚合支付模块 : 使用
+
+聚合支付模块 -down-> 招商银行支付平台 : 对接
+
+招商银行支付平台 -left-> 微信支付 : 支持
+招商银行支付平台 -right-> 支付宝支付 : 支持
+
+用户 -down-> 微信支付 : 扫码支付
+用户 -down-> 支付宝支付 : 扫码支付
+@enduml
